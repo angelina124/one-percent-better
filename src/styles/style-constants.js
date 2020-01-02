@@ -4,7 +4,8 @@ const styles = {
     mblue: '#011638',
     charcoal: '#364156',
     timberwolf: '#DAD7CD',
-    black: '#000000'
+    black: '#000000',
+    postTitle: "#FCDFA6"
   },
   height: {
     tiny: '30px',

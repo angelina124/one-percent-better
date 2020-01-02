@@ -1,21 +1,17 @@
-import React, {Component} from 'react';
+import React from 'react';
 import styled from 'styled-components'
-import styles from '../styles/constants'
 
 const Title = ({ title }) => <TitleContainer>{title}</TitleContainer>
 
 const TitleContainer = styled.span`
-  height: 64px;
-  font-size: 2em;
+  font-family: Courier;
+  display: auto;
+  margin-left: 0;
+  margin-right: 0;
+  text-align: center;
   font-weight: bold;
-  color: ${styles.colors.turquoise};
-  display: flex;
-  align-items: center;
+  color: white;
   margin-bottom: 12px;
-
-  @media (min-width: 801px) {
-    font-size: 3em;
-  }
 `
 
 export default Title

@@ -1,46 +1,102 @@
-import React, {Component} from 'react';
+import React from 'react';
+import ReactHtmlParser from 'react-html-parser'
+import dateFormat from 'dateformat'
+
+import PropTypes from 'prop-types'
 import '../styles/Home.css';
+import styles from '../styles/style-constants'
 import styled from 'styled-components'
+import PostTitle from './PostTitle'
 
 const Cell = (props) => {
-  const {name, date, text, labels} = props
-  return <div></div>
+  const {title, date, content, labels} = props
+  return (
+    <Post>
+      <PostTitle title={title} />
+      <Date>{ dateFormat(date, "dddd, mmmm dS, yyyy, h:MM:ss TT") }</Date>
+      <div>
+        { ReactHtmlParser(content) }
+      </div>
+    </Post>
+
+  )
 }
 
 const TableRows = (props) => {
   const { data } = props
-  return data.map((posts, i) => (
-    <Row key={post.id} index={i}>
-      {posts.map((post) => {
-        return <Cell name=post.name date=post.date_modified text=post.text labels=post.labels/>
-      }
-    </Row>
-  ))
+  console.log(data)
+  return <Table>{data.map((post, i) => {
+    console.log(post)
+    return (<div key={post._id} index={i} style={{marginBottom: "12px"}}>
+      <Cell title={post.title} date={post.updatedAt} content={post.content} labels={post.labels}/>
+    </div>)
+  })}</Table>
 }
 
-class PostTable extends Component {
- constructor(props) {
-   super(props)
+const LoadingIndicator = () => (
+  <tr>
+    <td>
+      <i
+        className="fas fa-spinner fa-spin"
+      />
+        Fetching Posts
+    </td>
+  </tr>
+)
 
-   this.state = {}
- }
- render(){
-    return (
-      <div className="Home">
-        <Table>
-          <Row>
+const ErrorIndicator = () => (
+  <span>
+    <td>
+      <i
+        className="fas fa-exclamation-triangle"
+      />
+        Could not fetch posts
+    </td>
+  </span>
+)
 
-          </Row>
-        </Table>
-      </div>
-    );
+const PostTable = ({
+  data, fetched, loading, error
+}) => {
+  console.log(data)
+  switch (true) {
+    case !fetched && loading:
+      return <LoadingIndicator />
+    case error:
+      return <ErrorIndicator />
+    default:
+      return <TableRows data={data} />
   }
 }
 
-const Table = styled.table`
-  background-color: blue;
+PostTable.propTypes = {
+  data: PropTypes.arrayOf(PropTypes.object).isRequired,
+  fetched: PropTypes.bool.isRequired,
+  loading: PropTypes.bool.isRequired,
+  error: PropTypes.bool.isRequired
+}
+
+const Date = styled.div`
+  color: ${styles.colors.timberwolf};
+  font-size: 0.8em;
+  margin-bottom: 12px
 `
 
-const Row = styled.tr
+const Post = styled.div`
+  background-color: ${styles.colors.black};
+  padding: 20px;
+  margin-left: 10%;
+  margin-right: 10%;
+  text-align: left;
+  border-radius: 10px;
+`
 
-export default Home;
+const Table = styled.div`
+  transform-origin: 0;
+  transform: scale(0.5);
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+`
+
+export default PostTable;
