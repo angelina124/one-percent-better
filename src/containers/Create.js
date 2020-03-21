@@ -32,7 +32,7 @@ class Create extends Component {
 
 
 const Header = styled.header`
-  background-color: black;
+  background-color: rgba(0,0,0,.5);
   padding: 10px;
   position: fixed;
   width:100%;

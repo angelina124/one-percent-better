@@ -7,6 +7,7 @@ const PostTitle = ({ title }) => <PostTitleContainer>{title}</PostTitleContainer
 const PostTitleContainer = styled.span`
   font-size: 1.2em;
   font-weight: bold;
+  font-family: Palatino;
   color: ${styles.colors.postTitle};
   display: flex;
   align-items: center;

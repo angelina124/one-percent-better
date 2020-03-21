@@ -14,7 +14,7 @@ const Cell = (props) => {
     <Post>
       <PostTitle title={title} />
       <Date>{ dateFormat(date, "dddd, mmmm dS, yyyy, h:MM:ss TT") }</Date>
-      <div>
+      <div style={{fontFamily: "Palatino"}}>
         { ReactHtmlParser(content) }
       </div>
     </Post>
@@ -27,8 +27,8 @@ const TableRows = (props) => {
   console.log(data)
   return <Table>{data.map((post, i) => {
     console.log(post)
-    return (<div key={post._id} index={i} style={{marginBottom: "12px"}}>
-      <Cell title={post.title} date={post.updatedAt} content={post.content} labels={post.labels}/>
+    return (<div key={post._id} index={i} style={{marginBottom: "24px"}}>
+      <Cell title={post.title} date={post.createdAt} content={post.content} labels={post.labels}/>
     </div>)
   })}</Table>
 }
@@ -84,7 +84,7 @@ const Date = styled.div`
 
 const Post = styled.div`
   background-color: ${styles.colors.black};
-  padding: 20px;
+  padding: 64px;
   margin-left: 10%;
   margin-right: 10%;
   text-align: left;

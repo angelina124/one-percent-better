@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import ReactHtmlParser from 'react-html-parser'
+import ReactHtmlParser from 'react-markdown'
 import dateFormat from 'dateformat'
 import axios from 'axios'
 
@@ -38,7 +38,6 @@ class PostForm extends Component {
   }
 
   createPost(event){
-    event.preventDefault()
     console.log("creating post")
     const {title, content, percentBetter} = this.state
     const requestBody = {
@@ -57,7 +56,7 @@ class PostForm extends Component {
     return (
       <Form onSubmit={this.createPost}>
         <Input placeholder="Title" type="text" value={this.state.title} onChange={this.changeTitle} style={{fontSize: "1.2em"}}/>
-        <PostContent rows="30" cols="100" value={this.state.content} onChange={this.changeContent}/>
+        <input type="file" name="post"/>
         <label style={{display: "flex", flexDirection: "row", height: "24px", alignItems: "center", padding: "12px"}}>
           <p style={{paddingRight: "12px", fontSize: "0.8em", fontFamily: "Courier"}}>PERCENT BETTER</p>
           <Input type="number" step="0.05" value={this.state.percentBetter} onChange={this.changePercent}/>
@@ -67,11 +66,6 @@ class PostForm extends Component {
     )
   }
 }
-
-const PostContent = styled.textarea`
-  margin-top: 12px;
-  border-radius: 5px;
-`
 
 const Form = styled.form`
   margin-top: 64px;
