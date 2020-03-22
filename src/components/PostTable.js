@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactHtmlParser from 'react-html-parser'
 import dateFormat from 'dateformat'
 
 import PropTypes from 'prop-types'
@@ -8,6 +7,9 @@ import styles from '../styles/style-constants'
 import styled from 'styled-components'
 import PostTitle from './PostTitle'
 
+const ReactMarkdown = require('react-markdown')
+
+// contents of a post should either be in plaintext, markdown, or html
 const Cell = (props) => {
   const {title, date, content, labels} = props
   return (
@@ -15,7 +17,10 @@ const Cell = (props) => {
       <PostTitle title={title} />
       <Date>{ dateFormat(date, "dddd, mmmm dS, yyyy, h:MM:ss TT") }</Date>
       <div style={{fontFamily: "Palatino"}}>
-        { ReactHtmlParser(content) }
+      <ReactMarkdown
+        source={content}
+        escapeHtml={false}
+      />
       </div>
     </Post>
 
