@@ -17,11 +17,13 @@ class PostForm extends Component {
     this.changeTitle = this.changeTitle.bind(this)
     this.changeContent = this.changeContent.bind(this)
     this.changePercent = this.changePercent.bind(this)
+    this.changeTags = this.changeTags.bind(this)
 
     this.state = {
       title: "",
       content: "",
-      percentBetter: 0
+      percentBetter: 0,
+      tags: ""
     }
   }
 
@@ -37,14 +39,18 @@ class PostForm extends Component {
     this.setState({percentBetter: parseFloat(event.target.value) || ""});
   }
 
+  changeTags(event) {
+    this.setState({tags: event.target.value || []});
+  }
+
   createPost(event){
     console.log("creating post")
-    const {title, content, percentBetter} = this.state
-    console.log(content)
+    const {title, content, percentBetter, tags} = this.state
     const requestBody = {
       title: title,
       content: content,
-      percentBetter: percentBetter
+      percentBetter: percentBetter,
+      tags: tags
     }
     axios.post(apiAddress + 'posts/', requestBody).then((data) => {
       console.log(data)
@@ -58,15 +64,33 @@ class PostForm extends Component {
       <Form onSubmit={this.createPost}>
         <Input placeholder="Title" type="text" value={this.state.title} onChange={this.changeTitle} style={{fontSize: "1.2em"}}/>
         <PostContent rows="30" cols="100" value={this.state.content} onChange={this.changeContent}/>
-        <label style={{display: "flex", flexDirection: "row", height: "24px", alignItems: "center", padding: "12px"}}>
-          <p style={{paddingRight: "12px", fontSize: "0.8em", fontFamily: "Courier"}}>PERCENT BETTER</p>
+        <FormLabel>
+          <FormLabelP>PERCENT BETTER</FormLabelP>
           <Input type="number" step="0.05" value={this.state.percentBetter} onChange={this.changePercent}/>
-        </label>
+        </FormLabel>
+        <FormLabel>
+          <FormLabelP>LABELS</FormLabelP>
+          <Input type="text" placeholder="Labels" value={this.state.tags} onChange={this.changeTags}/>
+        </FormLabel>
         <input type="submit" value="Submit" style={{margin: "12px", fontSize: "1em", padding: "12px"}}/>
       </Form>
     )
   }
 }
+
+const FormLabelP = styled.p`
+  padding-right: 12px;
+  font-size: 0.8em;
+  font-family: Courier
+`
+
+const FormLabel = styled.label`
+  display: flex;
+  flex-direction: row;
+  height: 24px;
+  align-items: center;
+  padding: 12px
+`
 
 const PostContent = styled.textarea`
   margin-top: 12px;
