@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { Redirect, BrowserRouter as Router, Route } from 'react-router-dom'
 
 import Home from './Home'
 import Create from './Create'
@@ -12,6 +12,9 @@ function App() {
       <header className="App-header">
         <Router>
           <Route path='/home/' component={Home} />
+        </Router>
+        <Router>
+          <Route path='/' component={Home} />
         </Router>
         <Router>
           <Route path='/create/' component={Create} />
