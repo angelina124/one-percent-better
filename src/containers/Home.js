@@ -46,6 +46,7 @@ class Home extends Component {
 
   fetchPostData(){
     console.log("fetching")
+     axios.defaults.port = 3001;
 
     axios.get(apiAddress + 'posts/').then((data) => {
       console.log(data)

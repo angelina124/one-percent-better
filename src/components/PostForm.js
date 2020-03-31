@@ -52,6 +52,7 @@ class PostForm extends Component {
       percentBetter: percentBetter,
       tags: tags
     }
+    axios.defaults.port = 3001;
     axios.post(apiAddress + 'posts/', requestBody).then((data) => {
       console.log(data)
     }, (error) => {
