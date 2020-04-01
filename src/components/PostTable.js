@@ -89,6 +89,7 @@ const Date = styled.div`
 
 const Post = styled.div`
   background-color: ${styles.colors.black};
+  color: white;
   padding: 64px;
   margin-left: 10%;
   margin-right: 10%;

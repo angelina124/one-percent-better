@@ -5,13 +5,13 @@ const Title = ({ title }) => <TitleContainer>{title}</TitleContainer>
 
 const TitleContainer = styled.span`
   font-family: Courier;
-  display: auto;
+  display: flex;
   margin-left: 0;
   margin-right: 0;
   text-align: center;
   font-weight: bold;
   color: white;
-  margin-bottom: 12px;
+  align-items: center;
 `
 
 export default Title
