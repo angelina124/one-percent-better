@@ -6,7 +6,6 @@ import Home from './Home'
 import Projects from './Projects'
 import Create from './Create'
 import Title from '../components/Title'
-import Tabs from '../components/Tabs'
 
 import styled from 'styled-components'
 import styles from '../styles/style-constants'
@@ -47,7 +46,6 @@ class App extends Component {
           <Header>
             <HeaderInfo>
               <Title title="{ BOOKS & BASH }" />
-              { /* <Tabs children={PAGES}/> */}
               <NavLink to={{pathname: "/home", state: {pagename: "home"}}}
               style={{ textDecoration: 'none', color: 'white'  }}
               activeStyle={activeStyle}>
