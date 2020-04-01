@@ -32,7 +32,7 @@ class Home extends Component {
     return (
       <div>
         <Header>
-          <Title title="ONE PERCENT BETTER" />
+          <Title title="{ BOOKS & BASH }" />
         </Header>
         <Container>
           <Background/>
@@ -76,6 +76,7 @@ Home.propTypes = {
 
 const Header = styled.header`
   background-color: rgba(0,0,0,.5);
+  opacity: 0.8;
   padding: 10px;
   position: fixed;
   width:100%;
