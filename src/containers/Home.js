@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import axios from 'axios'
+
 import homebg from '../assets/homebg.jpg'
 
 import styles from '../styles/style-constants'
@@ -31,9 +32,6 @@ class Home extends Component {
    const { postData, loading, fetched, error } = this.state
     return (
       <div>
-        <Header>
-          <Title title="{ BOOKS & BASH }" />
-        </Header>
         <Container>
           <Background/>
           <Content>
