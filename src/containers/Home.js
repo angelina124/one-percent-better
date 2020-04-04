@@ -6,7 +6,7 @@ import axios from 'axios'
 import homebg from '../assets/homebg.jpg'
 
 import styles from '../styles/style-constants'
-import apiAddress from '../constants'
+import {apiAddress} from '../constants'
 import Title from '../components/Title'
 import PostTable from '../components/PostTable'
 
@@ -33,7 +33,6 @@ class Home extends Component {
     return (
       <div>
         <Container>
-          <Background/>
           <Content>
             <PostTable data={postData.data} loading={loading} fetched={fetched} error={error} />
           </Content>
@@ -91,17 +90,6 @@ const Container = styled.div`
   overflow-y: scroll;
   perspective: 20px;
   perspective-origin: 0%;
-  transform: translateZ(0px);
-`
-
-const Background = styled.div`
-  background-image: url(${homebg});
-  background-size: 500%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
   transform: translateZ(0px);
 `
 

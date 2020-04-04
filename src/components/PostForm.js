@@ -4,7 +4,7 @@ import dateFormat from 'dateformat'
 import axios from 'axios'
 
 import PropTypes from 'prop-types'
-import apiAddress from '../constants'
+import {apiAddress} from '../constants'
 import styles from '../styles/style-constants'
 import styled from 'styled-components'
 import PostTitle from './PostTitle'

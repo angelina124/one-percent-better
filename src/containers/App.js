@@ -9,27 +9,14 @@ import Title from '../components/Title'
 
 import styled from 'styled-components'
 import styles from '../styles/style-constants'
+import {PAGES} from '../constants'
 // with default styles:
 import '../styles/App.css'
+import homebg from '../assets/homebg.jpg'
 
 let activeStyle = {
   fontWeight: "bold",
   color: styles.colors.aquamarine
-}
-
-const PAGES = {
-  'HOME': {
-    route: '/home'
-  },
-  'PROJECTS': {
-    route: '/projects'
-  }
-}
-
-const PAGECONTAINERS = {
-  '/home': Home,
-  '/create': Create,
-  '/projects': Projects
 }
 
 class App extends Component {
@@ -37,25 +24,22 @@ class App extends Component {
     super(props)
   }
   render(){
-    console.log(PAGES)
-    let { pagename } = this.props
-
     return (
-      <div className="App" style={{background: styles.colors.mblue}}>
+      <div className="App">
+      <Background/>
         <Router>
           <Header>
+            <Title title="{ BOOKS & BASH }"/>
             <HeaderInfo>
-              <Title title="{ BOOKS & BASH }" />
-              <NavLink to={{pathname: "/home", state: {pagename: "home"}}}
-              style={{ textDecoration: 'none', color: 'white'  }}
-              activeStyle={activeStyle}>
-              HOME2
-              </NavLink>
-              <NavLink to={{pathname: "/projects", state: {pagename: "projects"}}}
-              style={{ textDecoration: 'none', color: 'white' }}
-              activeStyle={activeStyle}>
-            PROJECTS2
-              </NavLink>
+              {
+                PAGES.map((page) => (
+                  <NavLink to={{pathname: page.route, state: {pagename: page.name}}}
+                  style={{ textDecoration: 'none', color: 'white'  }}
+                  activeStyle={activeStyle}>
+                  {page.name}
+                  </NavLink>
+                ))
+              }
             </HeaderInfo>
           </Header>
           <Switch>
@@ -73,10 +57,6 @@ class App extends Component {
   }
 }
 
-App.propTypes = {
-    pagename: PropTypes.oneOf(Object.keys(PAGES)).isRequired,
-};
-
 export default App;
 
 const Header = styled.header`
@@ -88,11 +68,30 @@ const Header = styled.header`
   top:0;
   z-index: 1;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+`
+
+const Background = styled.div`
+  background-image: url(${homebg});
+  background-size: 500%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform: translateZ(0px);
 `
 
 const HeaderInfo = styled.div`
-  display:flex;
-  justify-content: space-between;
-  width: 90%;
+  @media (max-width: 800px){
+    width: 40%;
+  }
+  @media (max-width: 1200px){
+    width: 35%;
+  }
+  @media (min-width: 1201px){
+    width: 25%;
+  }
+  display: flex;
+  justify-content: space-evenly;
 `
