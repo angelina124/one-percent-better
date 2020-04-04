@@ -32,11 +32,7 @@ class Home extends Component {
    const { postData, loading, fetched, error } = this.state
     return (
       <div>
-        <Container>
-          <Content>
-            <PostTable data={postData.data} loading={loading} fetched={fetched} error={error} />
-          </Content>
-        </Container>
+          <PostTable data={postData.data} loading={loading} fetched={fetched} error={error} />
       </div>
     );
   }
@@ -79,25 +75,6 @@ const Header = styled.header`
   width:100%;
   top:0;
   z-index: 1;
-`
-
-const Container = styled.div`
-  margin-top: 50px;
-  position: relative;
-  width: 100%;
-  height: 100%;
-  overflow-x: hidden;
-  overflow-y: scroll;
-  perspective: 20px;
-  perspective-origin: 0%;
-  transform: translateZ(0px);
-`
-
-const Content = styled.div`
-  fontFamily: Merriweather;
-  margin-top: 24px;
-  transform-origin: 0;
-  transform: translateZ(10px);
 `
 
 export default Home;

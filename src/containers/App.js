@@ -25,8 +25,7 @@ class App extends Component {
   }
   render(){
     return (
-      <div className="App">
-      <Background/>
+      <div>
         <Router>
           <Header>
             <Title title="{ BOOKS & BASH }"/>
@@ -42,17 +41,22 @@ class App extends Component {
               }
             </HeaderInfo>
           </Header>
-          <Switch>
-            <Route path="/home" component={Home} />
-            <Route path="/projects" component={Projects}/>
-            <Route path="/create" component={Create} />
-            <Route exact path="/">
-              <Redirect to="/home" />
-            </Route>
-            <Route render={() => <h1>Page not found</h1>} />
-          </Switch>
+          <Container>
+          <Background/>
+            <Content>
+              <Switch>
+                <Route path="/home" component={Home} />
+                <Route path="/projects" component={Projects}/>
+                <Route path="/create" component={Create} />
+                <Route exact path="/">
+                  <Redirect to="/home" />
+                </Route>
+                <Route render={() => <h1>Page not found</h1>} />
+              </Switch>
+            </Content>
+          </Container>
         </Router>
-      </div>
+        </div>
     );
   }
 }
@@ -60,6 +64,7 @@ class App extends Component {
 export default App;
 
 const Header = styled.header`
+  position: fixed;
   background-color: rgba(0,0,0);
   opacity: 0.8;
   padding: 10px;
@@ -81,6 +86,26 @@ const Background = styled.div`
   height: 100%;
   transform: translateZ(0px);
 `
+
+const Container = styled.div`
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  perspective: 20px;
+  perspective-origin: 0%;
+  transform: translateZ(0px);
+`
+
+const Content = styled.div`
+  fontFamily: Merriweather;
+  margin-top: 48px;
+  transform-origin: 0;
+  transform: translateZ(10px);
+  min-height: 100%;
+`
+
 
 const HeaderInfo = styled.div`
   @media (max-width: 800px){
