@@ -100,10 +100,10 @@ const Container = styled.div`
 
 const Content = styled.div`
   fontFamily: Merriweather;
-  margin-top: 24px;
+  margin-top: 48px;
   transform-origin: 0;
   transform: translateZ(10px);
-  min-height: 100px;
+  min-height: 100%;
 `
 
 
