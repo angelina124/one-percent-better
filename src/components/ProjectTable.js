@@ -13,7 +13,7 @@ const ReactMarkdown = require('react-markdown')
 const Cell = (props) => {
   const {title, date, about, tags, gitRepo} = props
   return (
-    <Post>
+    <Project>
       <PostTitle title={title} />
       <Date>{ dateFormat(date, "dddd, mmmm dS, yyyy, h:MM:ss TT") }</Date>
       <div style={{fontFamily: "Palatino"}}>
@@ -22,7 +22,7 @@ const Cell = (props) => {
         escapeHtml={false}
       />
       </div>
-    </Post>
+    </Project>
 
   )
 }
@@ -44,7 +44,7 @@ const LoadingIndicator = () => (
       <i
         className="fas fa-spinner fa-spin"
       />
-        Fetching Posts
+        Fetching Projects
     </td>
   </tr>
 )
@@ -60,7 +60,7 @@ const ErrorIndicator = () => (
   </span>
 )
 
-const PostTable = ({
+const ProjectTable = ({
   data, fetched, loading, error
 }) => {
   console.log(data)
@@ -74,7 +74,7 @@ const PostTable = ({
   }
 }
 
-PostTable.propTypes = {
+ProjectTable.propTypes = {
   data: PropTypes.arrayOf(PropTypes.object).isRequired,
   fetched: PropTypes.bool.isRequired,
   loading: PropTypes.bool.isRequired,
@@ -87,7 +87,7 @@ const Date = styled.div`
   margin-bottom: 12px
 `
 
-const Post = styled.div`
+const Project = styled.div`
   background-color: ${styles.colors.black};
   color: white;
   padding: 64px;
@@ -105,4 +105,4 @@ const Table = styled.div`
   margin-right: auto;
 `
 
-export default PostTable;
+export default ProjectTable;
