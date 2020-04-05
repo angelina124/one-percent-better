@@ -89,8 +89,9 @@ const Date = styled.div`
 `
 
 const Project = styled.div`
-  background-color: ${styles.colors.black};
-  color: white;
+  background-color: ${styles.colors.turquoise};
+  color: ${styles.colors.charcoal};
+  opacity: 0.8;
   padding: 64px;
   margin-left: 10%;
   margin-right: 10%;
