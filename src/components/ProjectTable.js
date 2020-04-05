@@ -17,10 +17,11 @@ const Cell = (props) => {
       <PostTitle title={title} />
       <Date>{ dateFormat(date, "dddd, mmmm dS, yyyy, h:MM:ss TT") }</Date>
       <div style={{fontFamily: "Palatino"}}>
-      <ReactMarkdown
-        source={about}
-        escapeHtml={false}
-      />
+        <ReactMarkdown
+          source={about}
+          escapeHtml={false}
+        />
+        { gitRepo != "No git repo for this project" && <a href={gitRepo} target="_blank">See git repository</a> }
       </div>
     </Project>
 
@@ -33,7 +34,7 @@ const TableRows = (props) => {
   return <Table>{data.map((project, i) => {
     console.log(project)
     return (<div key={project._id} index={i} style={{marginBottom: "24px"}}>
-      <Cell title={project.title} date={project.createdAt} content={project.about} tags={project.tags} gitRepo={project.gitRepo}/>
+      <Cell title={project.title} date={project.createdAt} about={project.about} tags={project.tags} gitRepo={project.gitRepo}/>
     </div>)
   })}</Table>
 }
