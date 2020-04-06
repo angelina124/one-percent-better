@@ -82,14 +82,16 @@ PostTable.propTypes = {
 }
 
 const Date = styled.div`
-  color: ${styles.colors.timberwolf};
+  color: ${styles.colors.mediumorchid};
   font-size: 0.8em;
-  margin-bottom: 12px
+  margin-bottom: 12px;
+  margin-top: 6px;
 `
 
 const Post = styled.div`
-  background-color: ${styles.colors.black};
+  background-color: ${styles.colors.mblue};
   color: white;
+  opacity: 0.9;
   padding: 64px;
   margin-left: 10%;
   margin-right: 10%;

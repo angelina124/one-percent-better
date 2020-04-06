@@ -83,15 +83,15 @@ ProjectTable.propTypes = {
 }
 
 const Date = styled.div`
-  color: ${styles.colors.timberwolf};
+  color: ${styles.colors.mediumorchid};
   font-size: 0.8em;
   margin-bottom: 12px
 `
 
 const Project = styled.div`
-  background-color: ${styles.colors.turquoise};
+  background-color: white;
   color: ${styles.colors.charcoal};
-  opacity: 0.8;
+  opacity: 0.9;
   padding: 64px;
   margin-left: 10%;
   margin-right: 10%;
